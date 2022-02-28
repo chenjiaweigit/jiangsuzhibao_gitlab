@@ -1,0 +1,65 @@
+#!/usr/bin/env python
+# _*_ coding:utf-8 _*_
+import json
+import os
+import pytest
+from common.Log import log
+from common.serverchanConf import sendServerChan
+from common.yaml_util1 import clear_yaml, read_yamlcase
+import time
+
+BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+def get_data(yaml_file_name):
+    try:
+        data_file_path = os.path.join(BASE_PATH, "data_file", yaml_file_name)
+        yaml_data = read_yamlcase(data_file_path)
+    except Exception as ex:
+        pytest.skip(str(ex))
+    else:
+        return yaml_data
+
+api_data = get_data("test_case.yaml")
+
+@pytest.fixture(scope="session",autouse=True)
+def execute_database_sql():
+    log.info("~~~~~~~~~~在所有请求之前执行一次~~~~~~~~~~~")
+    clear_yaml('/extract_token.yaml')
+    yield
+    log.info("~~~~~~~~~~在所有请求之后执行一次~~~~~~~~~~~")
+
+@pytest.fixture(scope="function")
+#获取用例函数名称
+def testcase_data(request):
+    testcase_name = request.function.__name__
+    return api_data.get(testcase_name)
+
+
+
+def pytest_terminal_summary(terminalreporter, exitstatus, config):
+    # 收集测试结果
+    total = terminalreporter._numcollected
+    passed = len(terminalreporter.stats.get('passed', []))
+    failed = len(terminalreporter.stats.get('failed', []))
+    error = len(terminalreporter.stats.get('error', []))
+    skipped = len(terminalreporter.stats.get('skipped', []))
+    deselected = len(terminalreporter.stats.get('deselected', []))
+    sum_list = ("用例总数:{}; "
+                "通过:{}; "
+                "失败:{}; "
+                "错误:{}; "
+                "跳过:{}; "
+                "省略:{} ".format(total, passed, failed, error, skipped, deselected))
+    if failed > 0:
+        sendServerChan(sum_list)
+
+    print("===============pytest_terminal_summary===================")
+    # print(terminalreporter.stats)
+    print("用例总数:",terminalreporter._numcollected)
+    print('通过:', len(terminalreporter.stats.get('passed', [])))
+    print('失败:', len(terminalreporter.stats.get('failed', [])))
+    print('错误:', len(terminalreporter.stats.get('error', [])))
+    print('跳过:', len(terminalreporter.stats.get('skipped', [])))
+    print('省略:', len(terminalreporter.stats.get('deselected', [])))
+    # terminalreporter._sessionstarttime 会话开始时间
+    duration = time.time() - terminalreporter._sessionstarttime
+    print('总运行时间:', duration, 'seconds')

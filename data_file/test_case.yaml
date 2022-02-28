@@ -1,0 +1,17 @@
+test_01:
+    # module, name, method, url, data,except_pt,except_code,except_result
+    # 模块名称，用例名称，请求方式，链接，数据，成功断言，状态码断言，内容是否存在断言，非空断言不需要填写
+ - ["登录","用户登录","post","/api/v1/user/login",{"password":"lvfulong2021","username":"admin"},True,200,'admin']
+
+test_02:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["采收计划管理","获取采收计划",'get','/api/v1/harvest_plan/list',{"year":"","page":1,"size":15,"product_name":"","sow_start_data":"","sow_end_data":"","house_type":'01'},True,200,'连栋温室']
+
+test_03:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["大屏","大屏地图上方数据",'get','/api/v1/control_pannel/area_count','',True,200,500]
+
+test_04:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["大屏","大屏气象数据",'get','/api/v1/control_pannel/weather','',True,20,"延庆"]
+
