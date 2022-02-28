@@ -2,6 +2,8 @@
 # _*_ coding:utf-8 _*_
 
 import os
+import re
+
 from common.Log import log
 from common.set_title import getrootdirectory
 from common.yaml_util1 import read_yaml, write_yaml, load_ini
@@ -25,20 +27,28 @@ def keyword_request(name,method,url,data):
         header = None
     else:
         header = read_yaml()
-    re = new_requests.all_send_requests(method=method,url=url,data=data,headers=header)
+    res = new_requests.all_send_requests(method=method,url=url,data=data,headers=header)
     result.success = False
-    if re.json()['code'] == 200:
-        result.success = True
-        # log.info(result.success)
-    else:
-        result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(re.json()["code"], re.json()["data"])
-    if 'token' in re.text:
-        token_values = {'token': re.json()['data']['result']['token']}
-        write_yaml(token_values, yaml_file='/extract_token.yaml')
-    # result.data = re.json()["data"]['result']['username']
-    result.data = re.text
+    try:
+
+        if res.status_code == 200:
+            result.success = True
+        else:
+            result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(res.status_code, res.json())
+        if 'token' in res.text:
+            '''
+            不同的项目研发代码编写格式不同，所以token无法统一获取，需根据实际情况进行提取，
+            目前有返回json字典提取和正则提取，自行选择一种进行操作，不需要可忽略...
+            '''
+            token_values = {'token': res.json()['data']['result']['token']}
+            # token_values = {'token': re.findall(f'"token":"(.+?)","i',res.text)[0]}
+            write_yaml(token_values, yaml_file='/extract_token.yaml')
+    except Exception as e:
+        print("获取请求返回信息失败{}".format(e))
+    result.data = res.text
+    log.info(res.text)
     # result.json = re.text
     log.info("resulr.data数据为:{}".format(result.success))
-    result.response = re
+    result.response = res
     log.info("{} ==>> 返回状态码为 >> {}".format(name,result.response.status_code))
     return result
