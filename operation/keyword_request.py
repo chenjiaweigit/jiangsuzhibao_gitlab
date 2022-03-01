@@ -29,26 +29,28 @@ def keyword_request(name,method,url,data):
         header = read_yaml()
     res = new_requests.all_send_requests(method=method,url=url,data=data,headers=header)
     result.success = False
-    try:
 
-        if res.status_code == 200:
-            result.success = True
-        else:
-            result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(res.status_code, res.json())
+
+    if res.status_code == 200:
+        result.success = True
+    else:
+        result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(res.status_code, res.json())
+    try:
         if 'token' in res.text:
             '''
             不同的项目研发代码编写格式不同，所以token无法统一获取，需根据实际情况进行提取，
             目前有返回json字典提取和正则提取，自行选择一种进行操作，不需要可忽略...
             '''
-            token_values = {'token': res.json()['data']['result']['token']}
+            token_values = {'token': res.json()['data']['token']}
             # token_values = {'token': re.findall(f'"token":"(.+?)","i',res.text)[0]}
             write_yaml(token_values, yaml_file='/extract_token.yaml')
     except Exception as e:
-        print("获取请求返回信息失败{}".format(e))
+        log.info("token获取失败失败{}".format(e))
     result.data = res.text
-    log.info(res.text)
+    log.info("请求返回信息 >>> {}".format(res.text))
     # result.json = re.text
     log.info("resulr.data数据为:{}".format(result.success))
     result.response = res
     log.info("{} ==>> 返回状态码为 >> {}".format(name,result.response.status_code))
+    log.info("json.get方法获取状态码{}".format(result.response.json().get('data',{}).get('code')))
     return result
