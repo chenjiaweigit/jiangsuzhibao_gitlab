@@ -1,0 +1,60 @@
+{
+  "f33186c4d4e642beebc593ac2f2535ee" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "380078758252b663",
+      "status" : "passed",
+      "time" : {
+        "start" : 1646156695932,
+        "stop" : 1646156696595,
+        "duration" : 663
+      }
+    } ]
+  },
+  "655e1d5f3205d8d75c261322a6b012c1" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 1,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "43e916e3ad0a9bad",
+      "status" : "skipped",
+      "statusDetails" : "Skipped: 暂时不执行该用例",
+      "time" : {
+        "start" : 1646156696736,
+        "stop" : 1646156696736,
+        "duration" : 0
+      }
+    } ]
+  },
+  "6947c623c667f6f96681f014261b91b1" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "fae5429983a04a12",
+      "status" : "passed",
+      "time" : {
+        "start" : 1646156696604,
+        "stop" : 1646156696727,
+        "duration" : 123
+      }
+    } ]
+  }
+}

@@ -26,12 +26,12 @@ class Test_login:
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
         allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")  # 用例描述
         # 用例步骤描述，暂时可不写
-        with allure.step("步骤1 ==>> 登录用户：{}".format(data['username'])):
+        with allure.step("步骤1 ==>> 登录用户：{}".format(data)):
             pass
         # step_1(data)
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
-        log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json().get("code")))
+        log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json().get('data',{}).get('code')))
         assert result.success == except_pt, result.error
         assert result.response.status_code == except_code
         # log.info(f'{json.dumps(result.response.json(), sort_keys=True, indent=2)}')   #将返回以json格式输出
