@@ -1,4 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"skipped","Wed Mar 02 01:44:56 CST 2022","Wed Mar 02 01:44:56 CST 2022","0","testcase","test_screen","Test_screen","","","大屏地图上方数据-预期成功",""
-"passed","Wed Mar 02 01:44:55 CST 2022","Wed Mar 02 01:44:56 CST 2022","663","testcase","test_login","Test_login","","","用户登录-预期成功","该用例是针对 监控{name}功能是否正常 场景的测试"
-"passed","Wed Mar 02 01:44:56 CST 2022","Wed Mar 02 01:44:56 CST 2022","123","testcase","test_screen","Test_screen","","","获取采收计划-预期成功","该用例是针对 监控{name}功能是否正常 场景的测试"
