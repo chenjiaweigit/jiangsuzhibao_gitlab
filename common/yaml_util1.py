@@ -19,6 +19,7 @@ BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 def read_yaml():
     with open(BASE_PATH +'/extract_token.yaml',encoding="utf-8") as f:
         value = yaml.load(stream=f,Loader=yaml.FullLoader)
+        log.info("读到token ==>>  {}".format(value))
         return value
 
 def read_yamlcase(yamlcase_name):

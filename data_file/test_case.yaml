@@ -13,5 +13,16 @@ test_03:
 
 test_04:
   # module, name, method,url,data,except_pt,except_code,except_result
- - ["病害风险地图","获取小麦风险分布",'get','/api/zhibao/v1/disaster/history/risk_map/distributed',{"lat":"32.9661343135971","lon":"119.463308431282","crop_type":"wheat"},True,20,2138]
+ - ["病害风险地图","获取小麦风险分布、指数",'get','/api/zhibao/v1/disaster/history/risk_map/distributed',{"lat":"32.9661343135971","lon":"119.463308431282","crop_type":"wheat"},True,200,2138]
 
+test_05:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["病害风险地图","获取水稻风险分布，指数",'get','/api/zhibao/v1/disaster/history/risk_map/distributed',{"lat":"32.9661343135971","lon":"119.463308431282","crop_type":"rice"},True,200,7251]
+
+test_06:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["病害风险地图","小麦-病害风险最高前十",'get','/api/zhibao/v1/disaster/history/risk_map/top_ten',{"crop_type": "wheat"},True,200,"南京市"]
+
+test_07:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["病害风险地图","水稻=病害风险最高前十",'get','/api/zhibao/v1/disaster/history/risk_map/top_ten',{"crop_type": "rice"},True,200,"盐城市"]
