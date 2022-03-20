@@ -43,6 +43,7 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     error = len(terminalreporter.stats.get('error', []))
     skipped = len(terminalreporter.stats.get('skipped', []))
     deselected = len(terminalreporter.stats.get('deselected', []))
+    email_list = ''
     sum_list = ("用例总数:{}; "
                 "通过:{}; "
                 "失败:{}; "
