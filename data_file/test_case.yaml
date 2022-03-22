@@ -26,3 +26,9 @@ test_06:
 test_07:
   # module, name, method,url,data,except_pt,except_code,except_result
  - ["病害风险地图","水稻=病害风险最高前十",'get','/api/zhibao/v1/disaster/history/risk_map/top_ten',{"crop_type": "rice"},True,200,"盐城市"]
+
+test_08:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["病害风险地图","水稻=病害风险最高前十",'get','/api/zhibao/v1/disaster/history/risk_map/top_ten',{"crop_type": "rice"},True,200,"盐城市"]
+
+

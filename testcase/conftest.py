@@ -4,6 +4,7 @@ import json
 import os
 import pytest
 from common.Log import log
+from common.Send_Email import Send_email
 from common.serverchanConf import sendServerChan
 from common.yaml_util1 import clear_yaml, read_yamlcase
 import time
@@ -43,6 +44,10 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     error = len(terminalreporter.stats.get('error', []))
     skipped = len(terminalreporter.stats.get('skipped', []))
     deselected = len(terminalreporter.stats.get('deselected', []))
+    # terminalreporter._sessionstarttime 会话开始时间
+    duration = time.time() - terminalreporter._sessionstarttime
+    email_list = {'用例总数':total,'通过':passed,'失败':failed,'错误':error,'跳过':skipped,'省略':deselected,'总运行时间':duration}
+    Send_email(result=email_list).mail()
     sum_list = ("用例总数:{}; "
                 "通过:{}; "
                 "失败:{}; "
@@ -61,5 +66,8 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     print('跳过:', len(terminalreporter.stats.get('skipped', [])))
     print('省略:', len(terminalreporter.stats.get('deselected', [])))
     # terminalreporter._sessionstarttime 会话开始时间
-    duration = time.time() - terminalreporter._sessionstarttime
+    # duration = time.time() - terminalreporter._sessionstarttime
     print('总运行时间:', duration, 'seconds')
+    print('开始时间',terminalreporter._sessionstarttime)
+    print('现在时间',time.time())
+    print(time.time()-terminalreporter._sessionstarttime)
