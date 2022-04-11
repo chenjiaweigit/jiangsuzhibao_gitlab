@@ -8,13 +8,14 @@ from common.yaml_util1 import load_ini
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.utils import formataddr
-from common.tool import zip_file
+from common.tool import zip_file, locathost_ip
 
 data_file_path = os.path.join(getrootdirectory(),'config','setting.ini')
 server_email = load_ini(data_file_path)["server_email"]
 html_report_path = os.path.join(getrootdirectory(),'html_report')
 zip_file(html_report_path)
 html_report = os.path.join(getrootdirectory(),'html_report.zip')
+locathost_ip = ('http://'+locathost_ip()+':8080')
 
 class Send_email:
 
@@ -24,15 +25,17 @@ class Send_email:
         self.addressee = server_email['addressee']  # 收件人邮箱账号，我这边发送给自己
         self.smtp_ssl = server_email['smtp_ssl']
         self.port = server_email['port']
-        self.result = ('自动化测试报告：\n' 
-                 '用例总数：%d；\n'
-                 '通过：%d;\n' 
-                 '失败：%d;\n' 
-                 '错误：%d;\n' 
-                 '跳过：%d;\n' 
-                 '省略：%d;\n'
-                 '总运行时间:%.3f second\n'
-                %(result['用例总数'],result['通过'],result['失败'],result['错误'],result['跳过'],result['省略'],result['总运行时间']))
+        self.result = ('自动化测试报告：\n'
+                       '用例总数：%d；\n'
+                       '通过：%d;\n'
+                       '失败：%d;\n'
+                       '错误：%d;\n'
+                       '跳过：%d;\n'
+                       '省略：%d;\n'
+                       '总运行时间:%.3f second\n'
+                       '项目报告地址：%s (该地址为局域网ip，需连接"NETGEAR"或"GAGO_IMPL"或者其他网络即可访问)'
+                       % (result['用例总数'], result['通过'], result['失败'], result['错误'], result['跳过'], result['省略'],
+                          result['总运行时间'],locathost_ip))
 
     def mail(self):
         ret = True
@@ -63,7 +66,7 @@ class Send_email:
 
 if __name__ == '__main__':
 
-    Send_email(5).mail()
+    Send_email(5).email_template()
 
     # a = 1647889583.735189 - 1647889579.7489228
     # print(a)
