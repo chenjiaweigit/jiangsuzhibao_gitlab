@@ -5,6 +5,7 @@ import os
 import pytest
 from common.Log import log
 from common.Send_Email import Send_email
+from common.WorkWeChat import send_workwhat
 from common.serverchanConf import sendServerChan
 from common.yaml_util1 import clear_yaml, read_yamlcase
 import time
@@ -48,12 +49,14 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     duration = time.time() - terminalreporter._sessionstarttime
     email_list = {'用例总数':total,'通过':passed,'失败':failed,'错误':error,'跳过':skipped,'省略':deselected,'总运行时间':duration}
     Send_email(result=email_list).mail()
-    sum_list = ("用例总数:{}; "
-                "通过:{}; "
-                "失败:{}; "
-                "错误:{}; "
-                "跳过:{}; "
-                "省略:{} ".format(total, passed, failed, error, skipped, deselected))
+    sum_list = ("用例总数: {}\n "
+                "通过: {}\n "
+                "失败: {}\n "
+                "错误: {}\n "
+                "跳过: {}\n "
+                "省略: {}\n"
+                "总运行时间: {:.3f}s".format(total, passed, failed, error, skipped, deselected, duration))
+    send_workwhat(sum_list)
     if failed > 0:
         sendServerChan(sum_list)
 

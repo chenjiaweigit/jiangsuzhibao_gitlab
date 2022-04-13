@@ -25,6 +25,7 @@ class Send_email:
         self.addressee = server_email['addressee']  # 收件人邮箱账号，我这边发送给自己
         self.smtp_ssl = server_email['smtp_ssl']
         self.port = server_email['port']
+        self.state = server_email['state']
         self.result = ('自动化测试报告：\n'
                        '用例总数：%d；\n'
                        '通过：%d;\n'
@@ -40,24 +41,27 @@ class Send_email:
     def mail(self):
         ret = True
         try:
-            msg = MIMEMultipart()
-            msg.attach(MIMEText(self.result, 'plain', 'utf-8'))
-            # msg = MIMEText('自动化测试报告', 'plain', 'utf-8')
-            msg['From'] = formataddr([self.sender, self.sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-            msg['To'] = formataddr([self.addressee, self.addressee])  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
-            msg['Subject'] = "江苏植保自动化监控报告"  # 邮件的主题，也可以说是标题
+            if self.state == 'True':
+                msg = MIMEMultipart()
+                msg.attach(MIMEText(self.result, 'plain', 'utf-8'))
+                # msg = MIMEText('自动化测试报告', 'plain', 'utf-8')
+                msg['From'] = formataddr([self.sender, self.sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
+                msg['To'] = formataddr([self.addressee, self.addressee])  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+                msg['Subject'] = "江苏植保自动化监控报告"  # 邮件的主题，也可以说是标题
 
-            att1 = MIMEText(open(html_report, 'rb').read(), 'base64', 'utf-8')
-            att1["Content-Type"] = 'application/octet-stream'
-            # 这里的filename可以任意写，写什么名字，邮件中显示什么名字
-            att1["Content-Disposition"] = 'attachment; filename="html_report.zip"'
-            msg.attach(att1)
+                att1 = MIMEText(open(html_report, 'rb').read(), 'base64', 'utf-8')
+                att1["Content-Type"] = 'application/octet-stream'
+                # 这里的filename可以任意写，写什么名字，邮件中显示什么名字
+                att1["Content-Disposition"] = 'attachment; filename="html_report.zip"'
+                msg.attach(att1)
 
-            server = smtplib.SMTP_SSL(self.smtp_ssl, self.port)  # 发件人邮箱中的SMTP服务器，端口是25
-            server.login(self.sender, self.password)  # 括号中对应的是发件人邮箱账号、邮箱密码
-            server.sendmail(self.sender, [self.addressee, ], msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
-            server.quit()  # 关闭连接
-            print("邮件发送成功")
+                server = smtplib.SMTP_SSL(self.smtp_ssl, self.port)  # 发件人邮箱中的SMTP服务器，端口是25
+                server.login(self.sender, self.password)  # 括号中对应的是发件人邮箱账号、邮箱密码
+                server.sendmail(self.sender, [self.addressee, ], msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
+                server.quit()  # 关闭连接
+                print("邮件发送成功")
+            else:
+                print("邮件未发送！")
         except Exception:  # 如果 try 中的语句没有执行，则会执行下面的 ret=False
             ret = False
             print("邮件发送失败，请检查配置")
