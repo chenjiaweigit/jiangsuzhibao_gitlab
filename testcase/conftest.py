@@ -55,12 +55,12 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
                   '总运行时间': duration}
     Send_email(result=email_list).mail()
     sum_list = ("用例总数: {}\n "
-                "通过: {}\n "
-                "失败: {}\n "
-                "错误: {}\n "
-                "跳过: {}\n "
-                "省略: {}\n"
-                "总运行时间: {:.3f}s".format(total, passed, failed, error, skipped, deselected, duration))
+                "通过： {}\n "
+                "失败： {}\n "
+                "错误： {}\n "
+                "跳过： {}\n "
+                "省略： {}\n"
+                "总运行时间： {:.3f}s".format(total, passed, failed, error, skipped, deselected, duration))
     send_workwhat(sum_list)
     send_workwhat_robot(sum_list)
     if failed > 0:

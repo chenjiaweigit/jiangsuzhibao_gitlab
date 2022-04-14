@@ -36,7 +36,7 @@ def send_workwhat(message):
         "agentid": 1000002,
         "textcard": {
             "title": "自动化监控报告",
-            "description": "<div class=\"gray\">" + now_time + "</div> <div class=\"normal\">" + message + "</div><div class=\"highlight\">可登录jenkins查看报告详情</div>",
+            "description": "<div class=\"gray\">" + now_time + "</div> <div class=\"normal\">" + message + "</div><div class=\"highlight\">登录Jenkins查看报告详情</div>",
             "url": locathost_ip,
             "btntxt": "更多"
         },
@@ -55,7 +55,7 @@ def send_workwhat_robot(message):
             "content": "<font color=\"warning\">自动化监控报告</font>\n"
                        ">" + now_time + "\n"
                                         ">" + message + "\n"
-                                                        ">[点击登录jenkins查看报告详情](" + locathost_ip + ")"
+                                                        ">[点击登录Jenkins查看报告详情](" + locathost_ip + ")"
         }
     }
 
