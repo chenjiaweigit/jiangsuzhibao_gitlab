@@ -10,16 +10,17 @@ from email.mime.multipart import MIMEMultipart
 from email.utils import formataddr
 from common.tool import zip_file, locathost_ip
 
-data_file_path = os.path.join(getrootdirectory(),'config','setting.ini')
+data_file_path = os.path.join(getrootdirectory(), 'config', 'setting.ini')
 server_email = load_ini(data_file_path)["server_email"]
-html_report_path = os.path.join(getrootdirectory(),'html_report')
+html_report_path = os.path.join(getrootdirectory(), 'html_report')
 zip_file(html_report_path)
-html_report = os.path.join(getrootdirectory(),'html_report.zip')
-locathost_ip = ('http://'+locathost_ip()+':8080')
+html_report = os.path.join(getrootdirectory(), 'html_report.zip')
+locathost_ip = ('http://' + locathost_ip() + ':8080')
+
 
 class Send_email:
 
-    def __init__(self,result):
+    def __init__(self, result):
         self.sender = server_email['sender']  # 发件人邮箱账号
         self.password = server_email['password']  # 发件人邮箱密码
         self.addressee = server_email['addressee']  # 收件人邮箱账号，我这边发送给自己
@@ -36,7 +37,7 @@ class Send_email:
                        '总运行时间:%.3f second\n'
                        '项目报告地址：%s (该地址为局域网ip，需连接"NETGEAR"或"GAGO_IMPL"或者其他网络即可访问)'
                        % (result['用例总数'], result['通过'], result['失败'], result['错误'], result['跳过'], result['省略'],
-                          result['总运行时间'],locathost_ip))
+                          result['总运行时间'], locathost_ip))
 
     def mail(self):
         ret = True
@@ -69,7 +70,6 @@ class Send_email:
 
 
 if __name__ == '__main__':
-
     Send_email(5).email_template()
 
     # a = 1647889583.735189 - 1647889579.7489228
