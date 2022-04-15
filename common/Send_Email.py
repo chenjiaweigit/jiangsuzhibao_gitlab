@@ -58,7 +58,7 @@ class Send_email:
 
                 server = smtplib.SMTP_SSL(self.smtp_ssl, self.port)  # 发件人邮箱中的SMTP服务器，端口是25
                 server.login(self.sender, self.password)  # 括号中对应的是发件人邮箱账号、邮箱密码
-                server.sendmail(self.sender, [self.addressee, ], msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
+                server.sendmail(self.sender, self.addressee.split(","), msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
                 server.quit()  # 关闭连接
                 print("邮件发送成功")
             else:
@@ -69,9 +69,11 @@ class Send_email:
         return ret
 
 
-if __name__ == '__main__':
-    Send_email(5).email_template()
+# if __name__ == '__main__':
+#     Send_email(5).email_template()
 
     # a = 1647889583.735189 - 1647889579.7489228
     # print(a)
     # print(1647889583.735189 - 1647889579.7489228)
+
+print(server_email['addressee'].split(","))
