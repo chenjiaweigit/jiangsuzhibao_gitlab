@@ -20,7 +20,7 @@ class AllRequests():
 
     def patch(self, url, data=None, **kwargs):
         return self.all_send_requests(url, "PATCH", data, **kwargs)
-    def all_send_requests(self,url,method,data,json=None,**kwargs):
+    def all_send_requests(self,url,method,data=None,json=None,**kwargs):
         # headers = dict(**kwargs).get("headers")
         url =url
         params = dict(**kwargs).get("params")

@@ -1,17 +1,34 @@
 test_01:
     # module, name, method, url, data,except_pt,except_code,except_result
     # 模块名称，用例名称，请求方式，链接，数据，成功断言，状态码断言，内容是否存在断言，非空断言不需要填写
- - ["登录","用户登录","post","/api/v1/user/login",{"password":"lvfulong2021","username":"admin"},True,200,'admin']
+ - ["登录","用户登录","post","/api/author/login",{"username":"sny","password":"sny123"},True,200,'sny']
 
 test_02:
   # module, name, method,url,data,except_pt,except_code,except_result
- - ["采收计划管理","获取采收计划",'get','/api/v1/harvest_plan/list',{"year":"","page":1,"size":15,"product_name":"","sow_start_data":"","sow_end_data":"","house_type":'01'},True,200,'连栋温室']
+ - ["侵染气象分区","获取小麦：温度，湿度，降水，太阳辐射数据",'get','/api/zhibao/v1/disaster/areas/statistics',{"lat":"32.9661343135971","lon": "119.463308431282","disaster_type": "chimei","feature": ["tave","rh","apcp","ssrd"]},True,200,'5360']
 
 test_03:
   # module, name, method,url,data,except_pt,except_code,except_result
- - ["大屏","大屏地图上方数据",'get','/api/v1/control_pannel/area_count','',True,200,500]
+ - ["侵染气象分区","获取水稻：温度，湿度，降水，太阳辐射数据",'get','/api/zhibao/v1/disaster/areas/statistics',{"lat":"32.9661343135971","lon":"119.463308431282","disaster_type":"daowen","feature": ["tave","rh","apcp","ssrd"]},True,200,4869]
 
 test_04:
   # module, name, method,url,data,except_pt,except_code,except_result
- - ["大屏","大屏气象数据",'get','/api/v1/control_pannel/weather','',True,20,"延庆"]
+ - ["病害风险地图","获取小麦风险分布、指数",'get','/api/zhibao/v1/disaster/history/risk_map/distributed',{"lat":"32.9661343135971","lon":"119.463308431282","crop_type":"wheat"},True,200,2138]
+
+test_05:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["病害风险地图","获取水稻风险分布，指数",'get','/api/zhibao/v1/disaster/history/risk_map/distributed',{"lat":"32.9661343135971","lon":"119.463308431282","crop_type":"rice"},True,200,7251]
+
+test_06:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["病害风险地图","小麦-病害风险最高前十",'get','/api/zhibao/v1/disaster/history/risk_map/top_ten',{"crop_type": "wheat"},True,200,"南京市"]
+
+test_07:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["病害风险地图","水稻=病害风险最高前十",'get','/api/zhibao/v1/disaster/history/risk_map/top_ten',{"crop_type": "rice"},True,200,"盐城市"]
+
+test_08:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["病害风险地图","水稻=病害风险最高前十",'get','/api/zhibao/v1/disaster/history/risk_map/top_ten',{"crop_type": "rice"},True,200,"盐城市"]
+
 
