@@ -27,7 +27,7 @@ class Send_email:
         self.smtp_ssl = server_email['smtp_ssl']
         self.port = server_email['port']
         self.state = server_email['state']
-        self.result = ('自动化测试报告：\n'
+        self.result = ('自动化测试报告 \n'
                        '用例总数：%d；\n'
                        '通过：%d;\n'
                        '失败：%d;\n'

@@ -15,7 +15,6 @@ corpsecret = work_wechat['corpsecret']
 token_url = work_wechat['token_url']
 program_url = work_wechat['program_url']
 robot_url = work_wechat['robot_url']
-key = work_wechat['key']
 now_time = time.strftime("%Y年%m月%d日 %H:%M:%S", time.localtime())
 
 
@@ -59,7 +58,6 @@ def send_workwhat_robot(message):
         }
     }
 
-    new_url = robot_url + "?key=" + key
-    send_robot_message = requests.post(new_url, json=data)
+    send_robot_message = requests.post(robot_url, json=data)
     if send_robot_message.status_code == 200:
         print("群机器人消息发送成功！")
