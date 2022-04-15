@@ -51,7 +51,7 @@ def send_workwhat_robot(message):
     data = {
         "msgtype": "markdown",
         "markdown": {
-            "content": "<font color=\"warning\">自动化监控报告</font>\n"
+            "content": "<font color=\"warning\">消息测试</font>\n"
                        ">" + now_time + "\n"
                                         ">" + message + "\n"
                                                         ">[点击登录Jenkins查看报告详情](" + locathost_ip + ")"
