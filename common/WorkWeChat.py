@@ -43,7 +43,7 @@ def send_workwhat(message):
         "safe": 0
     }
     new_url = program_url + '?access_token=' + workwhat_access_token()
-    if state == 'Ture':
+    if state == 'True':
         send_program_message = requests.post(url=new_url, json=data)
         if send_program_message.status_code == 200:
             print("企业微信小程序消息推送成功！")
@@ -59,7 +59,7 @@ def send_workwhat_robot(message):
                                                         ">[点击登录Jenkins查看报告详情](" + locathost_ip + ")"
         }
     }
-    if state == 'Ture':
+    if state == 'True':
         send_robot_message = requests.post(robot_url, json=data)
         if send_robot_message.status_code == 200:
             print("群机器人消息发送成功！")
