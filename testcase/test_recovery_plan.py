@@ -49,8 +49,7 @@ class Test_recovery_play:
 
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
-        log.info(
-            "状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json().get('data', {}).get('code')))
+        log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json().get('data', {}).get('code')))
         assert result.success == except_pt, log.info("断言失败：{}".format(result.error))
         assert result.response.status_code == except_code, log.info("断言失败，except_code返回为：{}".format(except_code))
         # log.info(f'{json.dumps(result.response.json(), sort_keys=True, indent=2)}')
@@ -74,8 +73,7 @@ class Test_recovery_play:
 
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
-        log.info(
-            "状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json().get('data', {}).get('code')))
+        log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json().get('data', {}).get('code')))
         assert result.success == except_pt, log.info("断言失败：{}".format(result.error))
         assert result.response.status_code == except_code, log.info("断言失败，except_code返回为：{}".format(except_code))
         # log.info(f'{json.dumps(result.response.json(), sort_keys=True, indent=2)}')
@@ -99,8 +97,7 @@ class Test_recovery_play:
 
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
-        log.info(
-            "状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json().get('data', {}).get('code')))
+        log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json().get('data', {}).get('code')))
         assert result.success == except_pt, log.info("断言失败：{}".format(result.error))
         assert result.response.status_code == except_code, log.info("断言失败，except_code返回为：{}".format(except_code))
         # log.info(f'{json.dumps(result.response.json(), sort_keys=True, indent=2)}')
