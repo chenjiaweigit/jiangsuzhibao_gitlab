@@ -17,7 +17,7 @@ test_04:
 
 test_05:
   # module, name, method,url,data,except_pt,except_code,except_result
- - ["病害风险地图","获取水稻风险分布，指数",'get','/api/zhibao/v1/disaster/history/risk_map/distributed',{"lat":"32.9661343135971","lon":"119.463308431282","crop_type":"rice"},True,200,7251]
+ - ["病害风险地图","获取水稻风险分布、指数",'get','/api/zhibao/v1/disaster/history/risk_map/distributed',{"lat":"32.9661343135971","lon":"119.463308431282","crop_type":"rice"},True,200,7251]
 
 test_06:
   # module, name, method,url,data,except_pt,except_code,except_result
@@ -25,10 +25,44 @@ test_06:
 
 test_07:
   # module, name, method,url,data,except_pt,except_code,except_result
- - ["病害风险地图","水稻=病害风险最高前十",'get','/api/zhibao/v1/disaster/history/risk_map/top_ten',{"crop_type": "rice"},True,200,"盐城市"]
+ - ["病害风险地图","水稻-病害风险最高前十",'get','/api/zhibao/v1/disaster/history/risk_map/top_ten',{"crop_type": "rice"},True,200,"盐城市"]
 
 test_08:
   # module, name, method,url,data,except_pt,except_code,except_result
- - ["病害风险地图","水稻=病害风险最高前十",'get','/api/zhibao/v1/disaster/history/risk_map/top_ten',{"crop_type": "rice"},True,200,"盐城市"]
+ - ["侵染气象分区","小麦-平均温度地图lerc",'get','/publisher/v1/data/tave/20170510/7/106/51/lerc',{},True,200,""]
 
+test_09:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["侵染气象分区","水稻-平均温度地图lerc",'get','/publisher/v1/data/tave/20170920/7/106/51/lerc',{},True,200,""]
 
+test_10:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["侵染气象分区","小麦-相对湿度地图lerc",'get','/publisher/v1/data/rh/20170510/7/106/51/lerc',{},True,200,""]
+
+test_11:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["侵染气象分区","水稻-平均温度地图lerc",'get','/publisher/v1/data/rh/20170920/7/106/51/lerc',{},True,200,""]
+
+test_12:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["侵染气象分区","小麦-累计降水地图lerc",'get','/publisher/v1/data/apcp/20170510/7/106/51/lerc',{},True,200,""]
+
+test_13:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["侵染气象分区","水稻-累计降水地图lerc",'get','/publisher/v1/data/apcp/20170920/7/106/51/lerc',{},True,200,""]
+
+test_14:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["侵染气象分区","小麦-太阳辐射地图lerc",'get','/publisher/v1/data/ssrd/20170510/7/106/51/lerc',{},True,200,""]
+
+test_15:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["侵染气象分区","水稻-太阳辐射地图lerc",'get','/publisher/v1/data/ssrd/20170920/7/106/51/lerc',{},True,200,""]
+
+test_16:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["病害风险地图","小麦-地图lerc",'get','/publisher/v1/data/wheatrisk/20180927/7/106/51/lerc',{},True,200,""]
+
+test_17:
+  # module, name, method,url,data,except_pt,except_code,except_result
+ - ["病害风险地图","水稻-地图lerc",'get','/publisher/v1/data/risk/20180927/7/106/51/lerc',{},True,200,""]
