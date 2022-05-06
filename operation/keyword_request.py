@@ -12,6 +12,8 @@ from operation.all_requests import new_requests
 
 data_file_path = os.path.join(getrootdirectory(), "config", "setting.ini")
 api_root_url = load_ini(data_file_path)["host"]["api_root_url"]
+lerc_token = load_ini(data_file_path)["host"]["lerc_token"]
+lerc_url = load_ini(data_file_path)["host"]["lerc_url"]
 
 def keyword_request(name,method,url,data):
     """
@@ -20,12 +22,17 @@ def keyword_request(name,method,url,data):
     """
     result = ResultBase()
     method = method
-    url = api_root_url + url
+    # url = api_root_url + url
     data = data
     name = name
-    if read_yaml() == None:
+    if read_yaml() == None and "lerc" not in url:
         header = None
+        url = api_root_url + url
+    elif "lerc" in url:
+        url = lerc_url + url
+        header = {"token": lerc_token}
     else:
+        url = api_root_url + url
         header = read_yaml()
     res = new_requests.all_send_requests(method=method,url=url,data=data,headers=header)
     result.success = False
@@ -52,5 +59,5 @@ def keyword_request(name,method,url,data):
     log.info("resulr.data数据为:{}".format(result.success))
     result.response = res
     log.info("{} ==>> 返回状态码为 >> {}".format(name,result.response.status_code))
-    log.info("json.get方法获取状态码{}".format(result.response.json().get('data',{}).get('code')))
+    # log.info("json.get方法获取状态码{}".format(result.response.json().get('data',{}).get('code')))
     return result
