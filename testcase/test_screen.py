@@ -24,7 +24,7 @@ class Test_screen:
     def test_screen_01(self,module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))
 
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name,method=method, url=url, data=data)
@@ -52,7 +52,7 @@ class Test_screen:
     def test_screen_02(self,module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))
 
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)

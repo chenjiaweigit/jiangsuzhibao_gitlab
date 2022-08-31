@@ -49,18 +49,20 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     error = len(terminalreporter.stats.get('error', []))
     skipped = len(terminalreporter.stats.get('skipped', []))
     deselected = len(terminalreporter.stats.get('deselected', []))
+    rerun = len(terminalreporter.stats.get('rerun', []))
     # terminalreporter._sessionstarttime 会话开始时间
     duration = time.time() - terminalreporter._sessionstarttime
     email_list = {'用例总数': total, '通过': passed, '失败': failed, '错误': error, '跳过': skipped, '省略': deselected,
-                  '总运行时间': duration}
+                  '重试':rerun,'总运行时间': duration}
     Send_email(result=email_list).mail()
     sum_list = ("用例总数: {}\n "
                 "通过： {}\n "
                 "失败： {}\n "
                 "错误： {}\n "
                 "跳过： {}\n "
-                "省略： {}\n"
-                "总运行时间： {:.3f}s".format(total, passed, failed, error, skipped, deselected, duration))
+                "省略： {}\n "
+                "重试： {}\n "
+                "总运行时间： {:.3f}s".format(total, passed, failed, error, skipped, deselected, rerun, duration))
     # send_workwhat(sum_list)
     send_workwhat_robot(sum_list)
     if failed > 0:
@@ -74,9 +76,10 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     print('错误:', len(terminalreporter.stats.get('error', [])))
     print('跳过:', len(terminalreporter.stats.get('skipped', [])))
     print('省略:', len(terminalreporter.stats.get('deselected', [])))
+    print('重试:', len(terminalreporter.stats.get('rerun', [])))
     # terminalreporter._sessionstarttime 会话开始时间
     # duration = time.time() - terminalreporter._sessionstarttime
     print('总运行时间:', duration, 'seconds')
-    print('开始时间', terminalreporter._sessionstarttime)
-    print('现在时间', time.time())
-    print(time.time() - terminalreporter._sessionstarttime)
+    print('开始时间', round(terminalreporter._sessionstarttime))
+    print('现在时间', round(time.time()))
+    print(round(time.time() - terminalreporter._sessionstarttime))

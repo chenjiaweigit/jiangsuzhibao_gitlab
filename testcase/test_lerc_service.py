@@ -18,7 +18,7 @@ class Test_lerc_service:
     def test_08(self, module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
         log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.status_code))
@@ -38,7 +38,7 @@ class Test_lerc_service:
     def test_09(self, module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
         log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.status_code))
@@ -58,7 +58,7 @@ class Test_lerc_service:
     def test_10(self, module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
         log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.status_code))
@@ -78,7 +78,7 @@ class Test_lerc_service:
     def test_11(self, module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
         log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.status_code))
@@ -98,7 +98,7 @@ class Test_lerc_service:
     def test_12(self, module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
         log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.status_code))
@@ -118,7 +118,7 @@ class Test_lerc_service:
     def test_13(self, module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
         log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.status_code))
@@ -138,7 +138,7 @@ class Test_lerc_service:
     def test_14(self, module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
         log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.status_code))
@@ -158,7 +158,7 @@ class Test_lerc_service:
     def test_15(self, module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
         log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.status_code))
@@ -178,7 +178,7 @@ class Test_lerc_service:
     def test_16(self, module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
         log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.status_code))
@@ -198,7 +198,7 @@ class Test_lerc_service:
     def test_17(self, module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))
         log.info("*************** {}-开始执行用例 ***************".format(name))
         result = keyword_request(name=name, method=method, url=url, data=data)
         log.info("状态码 ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.status_code))
