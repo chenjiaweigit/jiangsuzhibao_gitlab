@@ -25,7 +25,7 @@ class Test_login:
     def test_login(self, module, name, method, url, data, except_pt, except_code, except_result):
         allure.dynamic.feature("{}模块".format(module))
         allure.dynamic.story("用例--/{}/--预期成功".format(name))
-        allure.dynamic.description("该用例是针对 监控{name}功能是否正常 场景的测试")  # 用例描述
+        allure.dynamic.description("该用例是针对 监控\"{}\"功能是否正常 场景的测试".format(name))  # 用例描述
         # 用例步骤描述，暂时可不写
         with allure.step("步骤1 ==>> 登录用户：{}".format(data)):
             pass

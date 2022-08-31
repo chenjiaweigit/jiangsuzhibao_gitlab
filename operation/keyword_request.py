@@ -54,7 +54,10 @@ def keyword_request(name,method,url,data):
     except Exception as e:
         log.info("token获取失败失败{}".format(e))
     result.data = res.text
-    log.info("请求返回信息 >>> {}".format(res.text))
+    if "lerc" not in url:
+        log.info("请求返回信息 >>> {}".format(res.text))
+    else:
+        log.info("lerc数据请求返回过大暂不返回！！！")
     # result.json = re.text
     log.info("resulr.data数据为:{}".format(result.success))
     result.response = res
