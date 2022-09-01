@@ -34,10 +34,11 @@ class Send_email:
                        '错误：%d;\n'
                        '跳过：%d;\n'
                        '省略：%d;\n'
+                       '重试：%d;\n'
                        '总运行时间:%.3f second\n'
                        '项目报告地址：%s (该地址为局域网ip，需连接"NETGEAR"或"GAGO_IMPL"或者其他网络即可访问)'
                        % (result['用例总数'], result['通过'], result['失败'], result['错误'], result['跳过'], result['省略'],
-                          result['总运行时间'], locathost_ip))
+                          result['重试'], result['总运行时间'], locathost_ip))
 
     def mail(self):
         ret = True
