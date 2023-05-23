@@ -16,7 +16,7 @@ class MyConfigParser(ConfigParser):
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 #读取yaml文件
-def read_yaml():
+def read_yaml_token():
     with open(BASE_PATH +'/extract_token.yaml',encoding="utf-8") as f:
         value = yaml.load(stream=f,Loader=yaml.FullLoader)
         log.info("读到token ==>>  {}".format(value))
