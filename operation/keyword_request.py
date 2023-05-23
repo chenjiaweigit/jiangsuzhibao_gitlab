@@ -6,7 +6,7 @@ import re
 
 from common.Log import log
 from common.set_title import getrootdirectory
-from common.yaml_util1 import read_yaml, write_yaml, load_ini
+from common.yaml_util1 import read_yaml_token, write_yaml, load_ini
 from operation.ResultBase import ResultBase
 from operation.all_requests import new_requests
 
@@ -25,7 +25,7 @@ def keyword_request(name,method,url,data):
     # url = api_root_url + url
     data = data
     name = name
-    if read_yaml() == None and "lerc" not in url:
+    if read_yaml_token() == None and "lerc" not in url:
         header = None
         url = api_root_url + url
     elif "lerc" in url:
@@ -33,7 +33,7 @@ def keyword_request(name,method,url,data):
         header = {"token": lerc_token}
     else:
         url = api_root_url + url
-        header = read_yaml()
+        header = read_yaml_token()
     res = new_requests.all_send_requests(method=method,url=url,data=data,headers=header)
     result.success = False
 
