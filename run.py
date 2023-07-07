@@ -1,12 +1,7 @@
 #!/usr/bin/env python
-# _*_ coding:utf-8 _*_
-
+_*_ coding:utf-8 _*_
 import shutil
 import pytest
-import sys
-import importlib
-importlib.reload(sys)
-sys.setdefaultencoding('utf8')
 from common.set_title import *
 
 if __name__ == '__main__':
