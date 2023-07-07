@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
+import locale
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+
 import os
 import smtplib
 from common.set_title import getrootdirectory
