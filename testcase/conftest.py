@@ -82,4 +82,4 @@ def pytest_terminal_summary(terminalreporter, exitstatus, config):
     print('总运行时间:', duration, 'seconds')
     print('开始时间', round(terminalreporter._sessionstarttime))
     print('现在时间', round(time.time()))
-    print(round(time.time() - terminalreporter._sessionstarttime))
+    print('总时长',round(time.time() - terminalreporter._sessionstarttime),'s')
