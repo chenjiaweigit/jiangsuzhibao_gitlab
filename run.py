@@ -1,5 +1,8 @@
 import shutil
 import pytest
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 from common.set_title import *
 
 if __name__ == '__main__':
