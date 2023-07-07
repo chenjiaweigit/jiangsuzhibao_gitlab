@@ -3,8 +3,8 @@
 
 import shutil
 import pytest
-import sys
-reload(sys)
+import importlib,sys 
+import lib.reload(sys)
 sys.setdefaultencoding('utf8')
 from common.set_title import *
 
