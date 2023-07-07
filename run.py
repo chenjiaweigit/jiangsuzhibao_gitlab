@@ -12,7 +12,7 @@ if __name__ == '__main__':
     pytest.main()
     shutil.copy('./config/environment.properties','./temp')
     shutil.copy('./config/categories.json', './temp')
-    # os.system('allure generate ./temp -o ./report --clean')
+    os.system('allure generate ./temp -o ./report --clean')
     # 自定义allure窗口标题
     set_windos_title("自动化测试报告")
     # 自定义allure测试报告标题
