@@ -11,9 +11,9 @@ if __name__ == '__main__':
     shutil.copy('./config/categories.json', './temp')
     os.system('allure generate ./temp -o ./report --clean')
     # 自定义allure窗口标题
-    set_windos_title("report")
+    set_windos_title("自动化测试报告")
     # 自定义allure测试报告标题
-    report_title = get_json_data("report")
+    report_title = get_json_data("自动化测试报告")
     write_json_data(report_title)
     # 支持本地查看allure报告
     '''
