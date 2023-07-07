@@ -3,6 +3,7 @@
 import os
 def getrootdirectory():
     BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+
     return BASE_PATH
 
 index_file_path = os.path.join(getrootdirectory(), "report", "index.html")
@@ -15,6 +16,7 @@ def set_windos_title(new_title):
     """
     # report_title_filepath：这里主要是去拿到你的HTML测试报告的绝对路径【记得换成你自己的】
     report_title_filepath = index_file_path
+    print(report_title_filepath)
     # 定义为只读模型，并定义名称为: f
     with open(report_title_filepath, 'r+',encoding="utf-8") as f:
         # 读取当前文件的所有内容
